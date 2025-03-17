@@ -20,3 +20,5 @@ parcel
 13. diagnostics
 14. HTTPS hosting
 15. Tree Shaking
+
+config driven ui - when your ui changes with data, very important for 

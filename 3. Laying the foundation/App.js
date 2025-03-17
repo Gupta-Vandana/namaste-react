@@ -21,10 +21,12 @@ const Title = function()  {
 // component composition
 const HeadingComponent = () => {
     return (<div >
-        <Title>Hey, from title </Title>
+        <Title />
+        <Title></Title>
         <h1 >
             This is under Title
         </h1>
+        {Title()}
     </div> );
 }
 
