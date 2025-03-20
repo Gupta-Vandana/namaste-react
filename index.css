@@ -20,9 +20,17 @@
    margin: 10px;
 }
 
-.res-card{
+/* .res-card{
     width: 200px;
     height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+} */
+.res-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Optional: to fill the entire available height */
 }
 
 .res-card:hover{
@@ -32,7 +40,6 @@
 
 .search{
     padding: 10px;
-   
 }
 
 .res-logo img{
@@ -44,3 +51,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.login{
+    padding: 0 20px;
+}
+
+
