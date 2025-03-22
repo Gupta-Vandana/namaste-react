@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import { url, payload } from "./utils/constants.js"
 import Shimmer from "./Shimmer.js";
+import { Link } from "react-router";
 
  
 const Body =  () => {
@@ -33,14 +34,11 @@ const Body =  () => {
                         onChange={(e) =>{setSearchText(e.target.value)}}/>
                         <button
                             className="search-button"
-                            onClick={() =>
-                            {
-                          
+                            onClick={() =>{
                                 const filteredList = listOfRes.filter((res) => {
                                     return res.info.name.toLowerCase().includes(searchText.toLowerCase())
                                 });
-                                setFilteredListRes(filteredList);
-         
+                                setFilteredListRes (filteredList);
                             }}
 
                         >Search</button>
@@ -53,8 +51,11 @@ const Body =  () => {
                 </button>
             </div>
             <div className="res-container">
-                {listOfFilteredRes .map(res => (
-                    <ResCard key={res.info.id} resData={res}/>
+                    {listOfFilteredRes.map(res => (
+                        <Link key={res.info.id} to={"/restaurant/" + res.info.id}>
+                            <ResCard resData={res} />
+                        </Link>
+                    
                ))}
             </div>
     </div>

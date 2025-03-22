@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Header = () => {
     const [login, setLoginToggle] = useState(["login"]);
@@ -8,14 +9,13 @@ const Header = () => {
         <div className="logo"><img src="https://cdn-icons-png.flaticon.com/512/7139/7139899.png"/></div>
         <div className="nav-items">
             <ul>
-                <li>Home</li>
-                <li>About us</li>
-                <li>Contact us</li>
+                <li><Link to="/about">Home </Link></li>
+                <li><Link to="/about">About us</Link></li>
+                <li><Link to="/contact">Contact us</Link></li>
                     <li>Cart</li>
                     <button
                         className="login"
-                        onClick={() =>
-                        {
+                        onClick={() =>{
                             login === "login" ?
                                 setLoginToggle("logout") :
                                 setLoginToggle("login")

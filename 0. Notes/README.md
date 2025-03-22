@@ -22,3 +22,6 @@ parcel
 15. Tree Shaking
 
 config driven ui - when your ui changes with data, very important for 
+
+server side routing - make http call to render a page
+client side routing - without network calls we are rendering page then it is 
