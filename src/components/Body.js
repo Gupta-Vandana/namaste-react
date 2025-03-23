@@ -4,6 +4,7 @@ import axios from 'axios';
 import { url, payload } from "./utils/constants.js"
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router";
+import useOnlineStatus from "./utils/useOnlineStatus.js";
 
  
 const Body =  () => {
@@ -22,10 +23,16 @@ const Body =  () => {
         setListRes(restaurants);
         setFilteredListRes(restaurants);
     }; 
+
+    const isOffLine = useOnlineStatus();
+    if (isOffLine === false) {
+        return (<div>
+            hey, looks like you are offline; 
+        </div>);
+    }
     return (listOfRes.length === 0) ? (<Shimmer />) :
         
-     (
-        <div className="body">
+     (<div className="body">
                 <div className="filter">
                     <div className="search">
                         <input type="text"

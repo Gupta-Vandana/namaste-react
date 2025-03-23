@@ -25,3 +25,6 @@ config driven ui - when your ui changes with data, very important for
 
 server side routing - make http call to render a page
 client side routing - without network calls we are rendering page then it is 
+
+
+when parcel bundles your code, it creates a big .js file containing all your code which is later then used by browser. this files keeps on increasing and will make app slow. so we will need to code splitting or code chunking/ dynamic bundling/ lazy loading/ on demand loading/ dynamic import 

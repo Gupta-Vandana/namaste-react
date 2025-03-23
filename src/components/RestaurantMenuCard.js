@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 const RestaurantMenuCard = () => {
     const [restaurantInfo, setRestaurant] = useState([]);
     const [restaurantFilteredVegOrNonVegList, setFilteredRestaurant] = useState([]);
-    const { resId } = useParams();
+    const {   } = useParams();
     useEffect(() => {
         fetchListOfRestaurants();
     }, []);
