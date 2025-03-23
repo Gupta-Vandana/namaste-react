@@ -13,10 +13,6 @@ import RestaurantMenuCard from "./src/components/RestaurantMenuCard";
 
 const Grocery = lazy(() => import("./src/Grocery"));
 
-const styleCard = {
-    backgroundColor: "f0f0f0"
-};
-
 
 const Footer = () =>{
     return (
@@ -25,7 +21,7 @@ const Footer = () =>{
 };
 
 const App = () =>{
-    return(<div className="App ">
+    return(<div className="App">
         <Header />
        <Outlet/>  
         <Footer />
@@ -33,34 +29,6 @@ const App = () =>{
     ); 
 };
 
-// const appBrowser = createBrowserRouter([
-//     {
-//         path: "/",
-//         element : <App></App>
-//     },
-//     {
-//         path: "/about",
-//         element: <About></About>
-//     }
-// ])
-
-
-// const root = createRoot(document.getElementById("root"));
-// //root.render(<RouterProvider router={appBrowser }/>);
-
-
-// root.render(
-//   <BrowserRouter>
-//         <Routes>
-//             <Route path="/" element={<App />}/>
-//             <Route path="/about" element={<About />} />
-//             <Route path="/contact" element={<Contact />} />
-//             <Route path="*" element={<Error />} />
-//         </Routes>
-//   </BrowserRouter>
-// );
-
-// Create a router with errorElement
 const router = createBrowserRouter([
     {
       path: "/",
@@ -85,7 +53,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/grocery",
-                element: <Suspense fallback ={<h1>Loading..</h1>}><Grocery/></Suspense>
+                element: <Suspense fallback ={<h1>Loading...</h1>}><Grocery/></Suspense>
                 
             }
 

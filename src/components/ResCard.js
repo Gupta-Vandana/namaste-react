@@ -2,12 +2,12 @@
 const ResCard = (props) => {
     const { resData } = props;
     return (
-        <div className="res-card" >
+        <div className="m-4 p-4 w-[250px] rounded-2xl hover:bg-gray-300">
             <div className="res-logo">
-                <img className="res-logo-image" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                <img className="rounded-lg" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
           resData.info.cloudinaryImageId} alt="res-logo"></img>
             </div>
-            <div className="res-name">
+            <div className="font-bold py-3">
                 <h4 >{resData.info.name}</h4>
             </div>
             {/* <div className="cuisine">

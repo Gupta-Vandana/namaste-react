@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import RestaurantMenuItem from "../RestaurantMenuList";
 import { useParams } from "react-router";
@@ -6,24 +6,25 @@ import { useParams } from "react-router";
 const RestaurantMenuCard = () => {
     const [restaurantInfo, setRestaurant] = useState([]);
     const [restaurantFilteredVegOrNonVegList, setFilteredRestaurant] = useState([]);
-    const {   } = useParams();
+    const { resId } = useParams();
     useEffect(() => {
         fetchListOfRestaurants();
     }, []);
 
     const fetchListOfRestaurants = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5642452&lng=73.7768511&restaurantId="+resId+"&catalog_qa=undefined&submitAction=ENTER");
+        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5642452&lng=73.7768511&restaurantId="+resId);
         const json = await data.json();
         console.log(json);
         const restaurantInfo = json.data;
         setRestaurant(restaurantInfo);
         setFilteredRestaurant(restaurantInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
+        console.log(restaurantInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
         
     }
     if (restaurantInfo.length === 0) return (<div><Shimmer /></div>);
     console.log(restaurantInfo.cards[2].card.card.info);
-    const { name, cloudinaryImageId, costForTwoMessage, cuisines, id } = restaurantInfo.cards[2].card.card.info;
-    const mcBreakFastList = restaurantInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards;
+    const { name, costForTwoMessage, cuisines } = restaurantInfo.cards[2].card.card.info;
+    const mcBreakFastList = restaurantInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards;
     // setFilteredRestaurant(mcBreakFastList);
     
     return ((<div className="restaurant">

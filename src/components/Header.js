@@ -7,16 +7,16 @@ const Header = () => {
     const onlineStatus = useOnlineStatus();
     
     return (
-        <div className="header">
-        <div className="logo"><img src="https://cdn-icons-png.flaticon.com/512/7139/7139899.png"/></div>
+        <div className="flex justify-between shadow-amber-300 sm:bg-amber-200 ">
+        <div className="w-48"><img src="https://cdn-icons-png.flaticon.com/512/7139/7139899.png"/></div>
         <div className="nav-items">
-                <ul>
-                <li>{onlineStatus ? "green" : "red" }</li>
-                <li><Link to="/about">Home </Link></li>
-                <li><Link to="/about">About us</Link></li>
-                <li><Link to="/contact">Contact us</Link></li>
-                <li><Link to="/grocery">Grocery</Link></li>
-                <li>Cart</li>
+                <ul className="p-5 flex m-4">
+                <li className="p-4">{onlineStatus ? "green" : "red" }</li>
+                <li className="p-4"><Link to="/">Home </Link></li>
+                <li className="p-4"><Link to="/about">About us</Link></li>
+                <li className="p-4"><Link to="/contact">Contact us</Link></li>
+                <li className="p-4"><Link to="/grocery">Grocery</Link></li>
+                <li className="p-4">Cart</li>
                     <button
                         className="login"
                         onClick={() =>{

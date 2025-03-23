@@ -28,3 +28,16 @@ client side routing - without network calls we are rendering page then it is
 
 
 when parcel bundles your code, it creates a big .js file containing all your code which is later then used by browser. this files keeps on increasing and will make app slow. so we will need to code splitting or code chunking/ dynamic bundling/ lazy loading/ on demand loading/ dynamic import 
+
+
+scss + sass - not used in industry
+styles components  - 
+material design
+bootstrap
+ant ui
+chakra ui
+
+
+parcel will use postcss rc to read/understand  tailwind 
+
+npx tailwind init

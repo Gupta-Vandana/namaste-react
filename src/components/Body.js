@@ -32,32 +32,32 @@ const Body =  () => {
     }
     return (listOfRes.length === 0) ? (<Shimmer />) :
         
-     (<div className="body">
-                <div className="filter">
-                    <div className="search">
+     (<div className="">
+                <div className="flex">
+                    <div className="flex m-4 p-4">
                         <input type="text"
-                            className="search-bar"
+                            className="border-s-violet-400 border-solid  m-4 p-4"
                             value={searchText}
                         onChange={(e) =>{setSearchText(e.target.value)}}/>
                         <button
-                            className="search-button"
+                            className="p-4 m-4 bg-teal-300 rounded-2xl"
                             onClick={() =>{
                                 const filteredList = listOfRes.filter((res) => {
                                     return res.info.name.toLowerCase().includes(searchText.toLowerCase())
                                 });
                                 setFilteredListRes (filteredList);
-                            }}
-
-                        >Search</button>
-                    </div>
-                <button onClick={() => {
+                        }}>
+                        Search
+                    </button>
+                    <button className="bg-pink-300 flex p-4 m-4 rounded-2xl" onClick={() => {
                     const filteredList = listOfRes.filter(res => (res.info.totalRatingsString > 4));
                     setFilteredListRes(filteredList);
                 }}>
                  Top Rated Restaurants
-                </button>
-            </div>
-            <div className="res-container">
+                    </button>
+                    </div>
+             </div>
+            <div className="flex flex-wrap">
                     {listOfFilteredRes.map(res => (
                         <Link key={res.info.id} to={"/restaurant/" + res.info.id}>
                             <ResCard resData={res} />
