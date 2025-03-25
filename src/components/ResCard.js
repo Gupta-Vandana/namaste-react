@@ -23,4 +23,17 @@ const ResCard = (props) => {
     );
 };
 
+export const withAvgRating = (ResCard) => {
+    return (props) => {
+        const { resData } = props;
+        return (
+            <div>
+                <label className=" absolute bg-black text-white m-2 p-2 rounded-2xl">
+                    {resData.info.avgRating}
+                </label>
+                <ResCard {...props} />
+            </div>
+        )
+    }
+}
 export default ResCard;

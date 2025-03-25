@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard, { withAvgRating } from "./ResCard";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { url, payload } from "./utils/constants.js"
@@ -12,14 +12,18 @@ const Body =  () => {
     const [listOfFilteredRes, setFilteredListRes] = useState([]);
     const [searchText, setSearchText] = useState([]);
 
+    // this will return a component  with label inside it 
+    const ResCardWithAvgRating = withAvgRating(ResCard);
+
     useEffect(() => {
         fetchData();
     }, []);
     const fetchData = async () => {
         const data = await fetch(url) 
         const json = await data.json(); 
+       // console.log(json.data);
         const restaurants = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
-        console.log(restaurants);
+       // console.log(restaurants);
         setListRes(restaurants);
         setFilteredListRes(restaurants);
     }; 
@@ -49,6 +53,7 @@ const Body =  () => {
                         }}>
                         Search
                     </button>
+                    
                     <button className="bg-pink-300 flex p-4 m-4 rounded-2xl" onClick={() => {
                     const filteredList = listOfRes.filter(res => (res.info.totalRatingsString > 4));
                     setFilteredListRes(filteredList);
@@ -58,12 +63,16 @@ const Body =  () => {
                     </div>
              </div>
             <div className="flex flex-wrap">
-                    {listOfFilteredRes.map(res => (
+                {/**if promoted/ avg.rating is higher then show a diff card */}
+                {
+                    listOfFilteredRes.map(res => (
                         <Link key={res.info.id} to={"/restaurant/" + res.info.id}>
-                            <ResCard resData={res} />
-                        </Link>
-                    
-               ))}
+                            {res.info.avgRating > 4.5 ?
+                                (<ResCardWithAvgRating resData={res} />) :
+                                (<ResCard resData={res} />)}       
+                        </Link> 
+                    ))
+                }
             </div>
     </div>
     );
