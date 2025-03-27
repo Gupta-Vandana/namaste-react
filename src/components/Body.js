@@ -1,10 +1,11 @@
 import ResCard, { withAvgRating } from "./ResCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { url, payload } from "./utils/constants.js"
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router";
 import useOnlineStatus from "./utils/useOnlineStatus.js";
+import UserContext from "./UserContext.js";
 
  
 const Body =  () => {
@@ -34,6 +35,7 @@ const Body =  () => {
             hey, looks like you are offline; 
         </div>);
     }
+    const { loggedInUser,  setLoggedInUser  } = useContext(UserContext);
     return (listOfRes.length === 0) ? (<Shimmer />) :
         
      (<div className="">
@@ -61,7 +63,18 @@ const Body =  () => {
                  Top Rated Restaurants
                     </button>
                     </div>
-             </div>
+            </div>
+            <div className="flex items-center ">
+                <label className="p-2">
+                    Username : 
+                </label>
+                <input className="border border-black"
+                    value = {loggedInUser}
+                    onChange={(e) => {
+                    setLoggedInUser(e.target.value);
+                }}>
+                </input>
+            </div>
             <div className="flex flex-wrap">
                 {/**if promoted/ avg.rating is higher then show a diff card */}
                 {

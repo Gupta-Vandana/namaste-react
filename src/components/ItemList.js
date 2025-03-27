@@ -1,9 +1,18 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "./utils/cartSlice";
+
 const ItemList = (props) => {
     const { item } = props;
+    const dispatch = useDispatch();
+    const handleAddItem = (item) => {
+        dispatch(addItem(item));
+    }
+    console.log(item);
     return (
         <div>
         {
-            item.map((item) => (
+                item.map((item) => (
+            
                 <div className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between" key={item.card.info.id}>
                     <div>
                     <div className="py-2">
@@ -15,7 +24,7 @@ const ItemList = (props) => {
                     <div>
                         <img className="w-14 h-auto" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + item.card.info.imageId} />
                         <div>
-                            <button className="p-2 bg-white shadow-lg m-auto">
+                            <button className="p-2 bg-white shadow-lg m-auto" onClick={()=>handleAddItem(item)}>
                                 Add+
                             </button>
                         </div>
